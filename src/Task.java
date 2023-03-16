@@ -1,0 +1,92 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
+
+public class Task implements Printable {
+    private String id;
+    private String description;
+    private Enum priority;
+    private Employee author;
+    private Date creation;
+    private Date start;
+    private Date deadline;
+
+    public Task(String description, Enum priority, Employee author, Date start, Date deadline) {
+        this.id = UUID.randomUUID().toString();
+        this.description = description;
+        this.priority = priority;
+        this.author = author;
+        this.creation = new Date();
+        start.setMonth(start.getMonth()-1);
+        start.setYear(start.getYear()-1900);
+        this.start = start;
+        deadline.setMonth(deadline.getMonth()-1);
+        deadline.setYear(deadline.getYear()-1900);
+        this.deadline = deadline;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Enum getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Enum priority) {
+        this.priority = priority;
+    }
+
+    public Employee getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Employee author) {
+        this.author = author;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Date getCreation() {
+        return creation;
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    @Override
+    public String toString() {
+        return "id задачи: " + this.id + "\n"
+                + "Описание задачи: " + this.description + "\n"
+                + "Приоритет: " +this.priority + "\n"
+                + "Автор: " + this.author + "\n"
+                + "Дата создания: " + this.creation+ "\n"
+                + "Дата начала: " + this.start + "\n"
+                + "Дедлайн: " + this.deadline + "\n"
+                + "========================================";
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.toString());
+    }
+}
