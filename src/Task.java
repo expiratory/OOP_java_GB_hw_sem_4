@@ -1,9 +1,10 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 public class Task implements Printable {
-    private String id;
+    private UUID id;
     private String description;
     private Enum priority;
     private Employee author;
@@ -11,8 +12,9 @@ public class Task implements Printable {
     private Date start;
     private Date deadline;
 
+
     public Task(String description, Enum priority, Employee author, Date start, Date deadline) {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.description = description;
         this.priority = priority;
         this.author = author;
@@ -49,7 +51,7 @@ public class Task implements Printable {
         this.author = author;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 

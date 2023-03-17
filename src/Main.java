@@ -17,5 +17,6 @@ public class Main {
         taskBoard.addToTaskBoard(task2);
 
         taskBoard.print();
+
     }
 }
