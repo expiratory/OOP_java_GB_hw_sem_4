@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Task implements Printable {
@@ -17,10 +18,10 @@ public class Task implements Printable {
         this.priority = priority;
         this.author = author;
         this.creation = new Date();
-        start.setMonth(start.getMonth()-1);
+//        start.setMonth(start.getMonth()-1);
         start.setYear(start.getYear()-1900);
         this.start = start;
-        deadline.setMonth(deadline.getMonth()-1);
+//        deadline.setMonth(deadline.getMonth()-1);
         deadline.setYear(deadline.getYear()-1900);
         this.deadline = deadline;
     }
@@ -88,5 +89,18 @@ public class Task implements Printable {
     @Override
     public void print() {
         System.out.println(this.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(description, task.description) && Objects.equals(priority, task.priority) && Objects.equals(author, task.author) && Objects.equals(creation, task.creation) && Objects.equals(start, task.start) && Objects.equals(deadline, task.deadline);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, description, priority, author, creation, start, deadline);
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Employee implements Printable {
     private String firstName;
     private String secondName;
@@ -33,5 +35,18 @@ public class Employee implements Printable {
     @Override
     public void print() {
         System.out.println(this.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(secondName, employee.secondName) && Objects.equals(position, employee.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, secondName, position);
     }
 }
