@@ -18,10 +18,8 @@ public class Task implements Printable {
         this.priority = priority;
         this.author = author;
         this.creation = new Date();
-//        start.setMonth(start.getMonth()-1);
         start.setYear(start.getYear()-1900);
         this.start = start;
-//        deadline.setMonth(deadline.getMonth()-1);
         deadline.setYear(deadline.getYear()-1900);
         this.deadline = deadline;
     }
